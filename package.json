@@ -1,9 +1,9 @@
 {
-  "name": "aot-loader",
-  "version": "1.0.1",
+  "name": "yurynix-aot-loader",
+  "version": "0.0.1",
   "description": "Load and Pre-evaluate code at build-time",
   "repository": {
-    "url": "egoist/aot-loader",
+    "url": "yurynix/aot-loader",
     "type": "git"
   },
   "main": "index.js",
@@ -15,7 +15,7 @@
     "test": "npm run lint && jest",
     "lint": "xo"
   },
-  "author": "egoist <0x142857@gmail.com>",
+  "author": "yurynix <yury@nix.co.il>",
   "license": "MIT",
   "dependencies": {
     "loader-utils": "^1.1.0",
