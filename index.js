@@ -1,8 +1,11 @@
 const req = require('require-from-string')
 const { getOptions } = require('loader-utils')
 
-const defaultGetData = (exported, context) => {
-  return typeof exported === 'function' ? exported(context) : exported
+const defaultGetData = async (exported, context) => {
+  const exportedResult = typeof exported === 'function' ? exported(context) : exported
+  const result = exportedResult.then ? await exportedResult : exportedResult
+
+  return `export default ${JSON.stringify(result)}`
 }
 
 module.exports = async function (source) {
@@ -19,7 +22,7 @@ module.exports = async function (source) {
     let exported = req(source, this.resourcePath)
     exported = exported.default || exported
     const data = await getData(exported, context)
-    done(null, `export default ${JSON.stringify(data)}`)
+    done(null, data)
   } catch (err) {
     done(err)
   }
