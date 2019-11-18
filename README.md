@@ -32,3 +32,7 @@ The difference is that you can return whatever you want from `getData`:
         ....
       ]
 ```
+
+
+Another feautre is the `sourcePreProcess` function that executed on the the source before calling `getData`.
+

@@ -1,6 +1,6 @@
 {
   "name": "yurynix-aot-loader",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Load and Pre-evaluate code at build-time",
   "repository": {
     "url": "yurynix/aot-loader",

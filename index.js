@@ -8,6 +8,8 @@ const defaultGetData = async (exported, context) => {
   return `export default ${JSON.stringify(result)}`
 }
 
+const defaultSourcePreProcess = source => source;
+
 module.exports = async function (source) {
   this.cacheable()
 
@@ -17,9 +19,10 @@ module.exports = async function (source) {
     loader: this
   })
   const getData = options.getData || defaultGetData
+  const sourcePreProcess = options.sourcePreProcess || defaultSourcePreProcess
 
   try {
-    let exported = req(source, this.resourcePath)
+    let exported = req(sourcePreProcess(source), this.resourcePath)
     exported = exported.default || exported
     const data = await getData(exported, context)
     done(null, data)
